@@ -121,8 +121,8 @@ using 資料結構;
 #region 集合與映射
 {
     
-    List<string> words = TestHelper.ReadFile("測試文件1/雙城記.txt");
-    Console.WriteLine(words.Count);
+    //List<string> words = TestHelper.ReadFile("測試文件1/雙城記.txt");
+    //Console.WriteLine(words.Count);
 
     //LinkedList1Set<string> linkedList1Set = new LinkedList1Set<string>();
     //Stopwatch t = new Stopwatch();
@@ -135,24 +135,54 @@ using 資料結構;
     //Console.WriteLine(linkedList1Set.Count);
     //Console.WriteLine(t.ElapsedMilliseconds);
 
-    LinkedList3Dictionary<string, int> ld = new LinkedList3Dictionary<string, int>();
+    //LinkedList3Dictionary<string, int> ld = new LinkedList3Dictionary<string, int>();
+    //Stopwatch t1 = new Stopwatch();
+    //t1.Start();
+    //foreach (string word in words)
+    //{
+    //    if (ld.ContainsKey(word))
+    //    {
+    //        ld.Set(word, ld.Get(word) + 1);
+    //    }
+    //    else
+    //    {
+    //        ld.Add(word, 1);
+    //    }
+    //}
+    //t1.Stop();
+    //Console.WriteLine(ld.Count);
+    //Console.WriteLine(ld.Get("city"));
+    //Console.WriteLine(t1.ElapsedMilliseconds);
+}
+#endregion
+#region 有序數組
+{
+    int[] generalCustomers = TestSearch.ReadFile("測試文件2/遊戲用戶表.txt");
+    int[] mebers = TestSearch.ReadFile("測試文件2/遊戲會員表.txt");
+
+    List<int> user1 = new List<int>();
     Stopwatch t1 = new Stopwatch();
     t1.Start();
-    foreach (string word in words)
+    for (int i = 0; i < generalCustomers.Length; i++)
     {
-        if (ld.ContainsKey(word))
-        {
-            ld.Set(word, ld.Get(word) + 1);
-        }
-        else
-        {
-            ld.Add(word, 1);
-        }
+        if (TestSearch.OrderSearch(mebers, generalCustomers[i]) != -1)
+            user1.Add(generalCustomers[i]);
     }
     t1.Stop();
-    Console.WriteLine(ld.Count);
-    Console.WriteLine(ld.Get("city"));
+    Console.WriteLine(user1.Count);
     Console.WriteLine(t1.ElapsedMilliseconds);
+
+    List<int> user2 = new List<int>();
+    Stopwatch t2 = new Stopwatch();
+    t2.Start();
+    for (int i = 0; i < generalCustomers.Length; i++)
+    {
+        if (TestSearch.BinarySearch(mebers, generalCustomers[i]) != -1)
+            user2.Add(generalCustomers[i]);
+    }
+    t2.Stop();
+    Console.WriteLine(user2.Count);
+    Console.WriteLine(t2.ElapsedMilliseconds);
 }
 #endregion
 
