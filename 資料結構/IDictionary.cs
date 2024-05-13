@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace 資料結構
 {
-    public interface IDictionary<Key,Value>
+    public interface Idictionary<Key,Value>
     {
         void Add(Key key, Value value);
         void Remove(Key key);

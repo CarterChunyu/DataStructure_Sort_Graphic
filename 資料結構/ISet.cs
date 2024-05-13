@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace 資料結構
 {
-    public interface ISet<E>
+    public interface Iset<E>
     {
         int Count { get; }  
 

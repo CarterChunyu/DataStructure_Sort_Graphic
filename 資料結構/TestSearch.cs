@@ -36,12 +36,12 @@ namespace 資料結構
 
         public static int BinarySearch(int[] arr, int target)
         {
-            int l = 0;
-            int r = arr.Length;
-            int mid = (r - l) / 2 + l;
 
+            int l = 0;
+            int r = arr.Length-1;
             while (l <= r)
             {
+                int mid = (r - l) / 2 + l;
                 if (target == arr[mid])
                     return mid;
                 else if (target > arr[mid])

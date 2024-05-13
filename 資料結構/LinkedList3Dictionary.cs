@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace 資料結構
 {
-    public class LinkedList3Dictionary<Key, Value> : IDictionary<Key, Value>
+    public class LinkedList3Dictionary<Key, Value> : Idictionary<Key, Value>
     {
         private LinkedList3<Key, Value> l;
 

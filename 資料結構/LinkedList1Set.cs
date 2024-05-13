@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace 資料結構
 {
-    public class LinkedList1Set<E> : ISet<E>
+    public class LinkedList1Set<E> : Iset<E>
     {
         private LinkedList1<E> l;
 
@@ -18,7 +18,7 @@ namespace 資料結構
 
         public bool IsEmpty { get { return this.l.IsEmpty; } }
 
-        int ISet<E>.Count { get { return this.l.Count; } }
+        int Iset<E>.Count { get { return this.l.Count; } }
 
 
         public void Add(E e)
@@ -37,7 +37,7 @@ namespace 資料結構
             this.l.Remove(e);
         }
 
-        void ISet<E>.Add(E e)
+        void Iset<E>.Add(E e)
         {
             this.Add(e);
         }
