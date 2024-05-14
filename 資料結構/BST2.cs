@@ -1,38 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace 資料結構
 {
-    public class BST1<Key> where Key : IComparable<Key>
+    public class BST2<Key,Value> where Key : IComparable<Key>
     {
         private class Node
         {
             public Key key;
+            public Value value;
             public Node? left;
             public Node? right;
 
-            public Node(Key key)
+            public Node(Key key, Value value)
             {
                 this.key = key;
+                this.value = value;
                 this.left = null;
                 this.right = null;
             }
 
             public override string ToString()
             {
-                return key.ToString();
+                return $"{key}-{value}";
             }
         }
 
         private int N;
         private Node? root;
 
-        public BST1()
+        public BST2()
         {
             this.N = 0;
             this.root = null;
@@ -41,23 +41,23 @@ namespace 資料結構
         public int Count { get { return N; } }
         public bool IsEmpty { get { return N == 0; } }
 
-        public void Add(Key key)
+        public void Add(Key key, Value value)
         {
-            this.root = Add(this.root, key);
+            this.root = Add(this.root, key, value);
         }
 
-        private Node Add(Node? node, Key key)
+        private Node Add(Node? node, Key key, Value value)
         {
             if (node == null)
             {
                 N++;
-                return new Node(key);
+                return new Node(key, value);
             }
 
             if (key.CompareTo(node.key) < 0)
-                node.left = Add(node.left, key);
+                node.left = Add(node.left, key, value);
             else if (key.CompareTo(node.key) > 0)
-                node.right = Add(node.right, key);
+                node.right = Add(node.right, key, value);
             return node;
         }
 
@@ -93,7 +93,7 @@ namespace 資料結構
         {
             if (this.root == null)
                 throw new ArgumentException("空樹");
-            this.root  = this.RemoveMax(this.root);
+            this.root = this.RemoveMax(this.root);
         }
 
         private Node? RemoveMax(Node? node)
@@ -111,7 +111,7 @@ namespace 資料結構
             this.root = Remove(this.root, key);
         }
 
-        private Node? Remove(Node? node,Key key)
+        private Node? Remove(Node? node, Key key)
         {
             if (node == null)
                 return null;
@@ -120,7 +120,7 @@ namespace 資料結構
                 node.left = Remove(node.left, key);
                 return node;
             }
-            else if(key.CompareTo(node.key) > 0)
+            else if (key.CompareTo(node.key) > 0)
             {
                 node.right = Remove(node.right, key);
                 return node;
@@ -165,7 +165,35 @@ namespace 資料結構
         {
             if (node == null)
                 return 0;
-            return 1+Math.Max(MaxHeight(node.left), MaxHeight(node.right));
+            return 1 + Math.Max(MaxHeight(node.left), MaxHeight(node.right));
+        }
+
+        private Node? GetNode(Node? node, Key key)
+        {
+            if (node == null)
+                return null;
+            if (key.CompareTo(node.key) < 0)
+                return GetNode(node.left, key);
+            else if (key.CompareTo(node.key) > 0)
+                return GetNode(node.right, key);
+            else
+                return node;
+        }
+
+        public Value Get(Key key)
+        {
+            Node node = GetNode(this.root, key);
+            if (node == null)
+                throw new ArgumentException("沒有此鍵");
+            return node.value;
+        }
+
+        public void Set(Key key, Value value)
+        {
+            Node node = GetNode(this.root, key);
+            if (node == null)
+                throw new ArgumentException("沒有此鍵");
+            node.value = value; 
         }
 
         public int Rank(Key key)
@@ -197,7 +225,7 @@ namespace 資料結構
             else if (index > Rank(node.key))
                 return Select(node.right, index);
             else
-                return node; 
+                return node;
         }
 
         public Key Ceiling(Key key)

@@ -214,23 +214,88 @@ using 資料結構;
 #endregion
 #region 二差樹
 {
-    int[] arr = { 5, 3, 7, 9, 1, 4, 8, 12, 3 };
-    BST1<int> bST1 = new BST1<int>();
-    for (int i = 0; i < arr.Length; i++)
-    {
-        bST1.Add(arr[i]);       
-    }
-    Console.WriteLine(bST1.Count);
-    bST1.PreOrder();
-    bST1.Remove(45);
-    Console.WriteLine("---");
-    bST1.Remove(7);
-    bST1.PreOrder();
-    Console.WriteLine("---");
-    Console.WriteLine(bST1.Rank(7));
-    Console.WriteLine(bST1.Rank(13));
-    Console.WriteLine(bST1.Rank(12));
-    Console.WriteLine(bST1.Rank(0));
+    //int[] arr = { 5, 3, 7, 9, 1, 4, 8, 12, 3 };
+    //BST1<int> bST1 = new BST1<int>();
+    //for (int i = 0; i < arr.Length; i++)
+    //{
+    //    bST1.Add(arr[i]);
+    //}
+    ////Console.WriteLine(bST1.Count);
+    ////bST1.PreOrder();
+    //bST1.Remove(45);
+    //Console.WriteLine("---");
+    //bST1.InOrder();
+    //Console.WriteLine("---");
+    ////bST1.Remove(7);
+    //bST1.PreOrder();
+    //Console.WriteLine("---");
+    //Console.WriteLine(bST1.Rank(7));
+    //Console.WriteLine(bST1.Rank(13));
+    //Console.WriteLine(bST1.Rank(12));
+    //Console.WriteLine(bST1.Rank(0));
+    //Console.WriteLine("---");
+    //Console.WriteLine(bST1.Select(3));
+    ////Console.WriteLine(bST1.Ceiling(13));
+    //Console.WriteLine(bST1.Ceiling(6));
+    //Console.WriteLine(bST1.Floor(6));
+    ////Console.WriteLine(bST1.Floor(0));
+    //Console.WriteLine(bST1.MaxHeight());
+    //Console.WriteLine("---");
+    //bST1.PostOrder();
+    //Console.WriteLine(bST1.Contains(7));
+    //Console.WriteLine(bST1.Contains(14));
+
+    //List<string> words = TestHelper.ReadFile("測試文件1/雙城記.txt");
+    //Console.WriteLine(words.Count);
+
+    //BST1Set<string> bST1Set = new BST1Set<string>();
+    //Console.WriteLine(TestObj.TestSet(bST1Set, words));
+    //Console.WriteLine(bST1Set.Count);
+
+    //BST2Dictionary<string, int> dic = new 資料結構.BST2Dictionary<string, int>();
+    //Console.WriteLine(TestObj.TestDiciotnary(dic, words));
+    //Console.WriteLine(dic.Count);
+    //Console.WriteLine(dic.Get("city"));
+
+
+}
+#endregion
+#region 紅黑樹
+{
+    //int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    //RBT1<int> rBT1 = new RBT1<int>();
+    //for (int i = 0; i < nums.Length; i++)
+    //    rBT1.Add(nums[i]);
+    //Console.WriteLine(rBT1.MaxHeight());
+
+
+    //List<string> words = TestHelper.ReadFile("測試文件1/雙城記.txt");
+    //Console.WriteLine(words.Count);
+
+    //BST1Set<string> bST1Set = new BST1Set<string>();
+    //Console.WriteLine(TestObj.TestSet(bST1Set, words));
+    //Console.WriteLine(bST1Set.Count);
+
+    //RBT2Dictionary<string, int> dic = new 資料結構.RBT2Dictionary<string, int>();
+    //Console.WriteLine(TestObj.TestDiciotnary(dic, words));
+    //Console.WriteLine(dic.Count);
+    //Console.WriteLine(dic.Get("city"));
+
+}
+#endregion
+#region 哈希表
+{
+    List<string> words = TestHelper.ReadFile("測試文件1/雙城記.txt");
+    Console.WriteLine(words.Count);
+
+    HashSt1Set<string> hashSt1Set = new HashSt1Set<string>();
+    Console.WriteLine(TestObj.TestSet(hashSt1Set, words));
+    Console.WriteLine(hashSt1Set.Count);
+
+    HashSt2Dictionary<string, int> dic = new 資料結構.HashSt2Dictionary<string, int>();
+    Console.WriteLine(TestObj.TestDiciotnary(dic, words));
+    Console.WriteLine(dic.Count);
+    Console.WriteLine(dic.Get("city"));
 }
 #endregion
 
