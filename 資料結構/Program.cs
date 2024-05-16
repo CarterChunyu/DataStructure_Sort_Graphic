@@ -285,17 +285,56 @@ using 資料結構;
 #endregion
 #region 哈希表
 {
-    List<string> words = TestHelper.ReadFile("測試文件1/雙城記.txt");
-    Console.WriteLine(words.Count);
+    //List<string> words = TestHelper.ReadFile("測試文件1/雙城記.txt");
+    //Console.WriteLine(words.Count);
 
-    HashSt1Set<string> hashSt1Set = new HashSt1Set<string>();
-    Console.WriteLine(TestObj.TestSet(hashSt1Set, words));
-    Console.WriteLine(hashSt1Set.Count);
+    //HashSt1Set<string> hashSt1Set = new HashSt1Set<string>();
+    //Console.WriteLine(TestObj.TestSet(hashSt1Set, words));
+    //Console.WriteLine(hashSt1Set.Count);
 
-    HashSt2Dictionary<string, int> dic = new 資料結構.HashSt2Dictionary<string, int>();
-    Console.WriteLine(TestObj.TestDiciotnary(dic, words));
-    Console.WriteLine(dic.Count);
-    Console.WriteLine(dic.Get("city"));
+    //HashSt2Dictionary<string, int> dic = new 資料結構.HashSt2Dictionary<string, int>();
+    //Console.WriteLine(TestObj.TestDiciotnary(dic, words));
+    //Console.WriteLine(dic.Count);
+    //Console.WriteLine(dic.Get("city"));
+}
+#endregion
+#region 最大堆
+{
+    //MaxHeap<int> maxHeap = new MaxHeap<int>();
+    //int[] a = { 3, 2, 1, 5, 4 };
+    //for (int i = 0; i < 5; i++)
+    //{
+    //    maxHeap.Add(a[i]);
+    //}
+    //Console.WriteLine(maxHeap);
+    //Console.WriteLine("-------------");
+    //Console.WriteLine(maxHeap.RemoveMax());
+    //Console.WriteLine("-------------");
+    //Console.WriteLine(maxHeap);
+
+    int[] nums = TestSearch.ReadFile("測試文件3/TopM.txt");
+    MaxPQ<int> maxPQ = new MaxPQ<int>();
+    for (int i = 0; i < nums.Length; i++)
+    {
+        if (nums[i] ==44696)
+        {
+            Console.WriteLine();
+        }
+
+        if (maxPQ.Count < 10 )
+        {
+            maxPQ.Enqueue(nums[i]);
+        }
+        else
+        {
+            if (nums[i] < maxPQ.Peek())
+            {
+                maxPQ.Dequeue();
+                maxPQ.Enqueue(nums[i]);
+            }
+        }
+    }
+    Console.WriteLine(maxPQ);
 }
 #endregion
 
